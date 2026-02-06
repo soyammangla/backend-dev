@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
       `);
     }
 
-    // Route: /user?name=Dhruv&age=21
+    // Route: /user?name=soyam&age=19
     else if (pathname === "/user") {
       const { name, age } = parsedUrl.query;
 
