@@ -6,8 +6,8 @@ app.use(express.json());
 app.get("/users/:id/profile", (req, res) => {
   const userId = req.params.id;
 
-  const selectedTab = req.query.tab || "info"; // default = info
-  const language = req.query.lang || "en"; // default = en
+  const selectedTab = req.query.tab || "info";
+  const language = req.query.lang || "en";
 
   res.status(200).json({
     userId: userId,
