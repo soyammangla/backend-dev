@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Employee</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f6f7;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 800px;
+        margin: 50px auto;
+        background: white;
+        padding: 60px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 26px;
+        color: #333;
+      }
+
+      .form-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .form-row label {
+        width: 150px;
+        font-weight: bold;
+        color: #444;
+        margin: 5px;
+      }
+
+      .form-row input,
+      .form-row select {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 20px;
+      }
+
+      .check-group {
+        display: flex;
+        gap: 15px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .cancel {
+        background: #ddd;
+      }
+
+      .submit {
+        background: #00a9b5;
+        color: white;
+      }
+
+      .reset {
+        background: #ddd;
+      }
+
+      button:hover {
+        opacity: 0.85;
+      }
+
+      .dept-group {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+      }
+
+      .dept-option input {
+        display: none;
+      }
+
+      .dept-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .custom-box {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #aaa;
+        border-radius: 2px;
+        display: inline-block;
+        position: relative;
+      }
+
+      .dept-option input:checked + .custom-box {
+        background: #00a9b5;
+        border-color: #00a9b5;
+      }
+
+      .dept-option input:checked + .custom-box::after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      .profile-images {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .img-option input {
+        display: none;
+      }
+
+      .img-option img {
+        width: 60px; 
+        height: 60px; 
+        border-radius: 50%; 
+        object-fit: cover; 
+        cursor: pointer;
+        border: 3px solid transparent;
+        transition: 0.3s ease;
+      }
+
+      .img-option img:hover {
+        transform: scale(1.1);
+      }
+
+      .img-option input:checked + img {
+        border: 3px solid #00a9b5;
+        box-shadow: 0 0 10px rgba(0, 169, 181, 0.5);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Employee Payroll Form</h2>
+
+      <form action="/create" method="POST">
+        <div class="form-row">
+          <label>Enrollment No</label>
+          <input type="text" name="enrollmentNumber" required />
+        </div>
+
+        <div class="form-row">
+          <label>Name</label>
+          <input type="text" name="name" required />
+        </div>
+
+        <div class="form-row">
+          <label>Profile Image</label>
+
+          <div class="profile-images">
+            <label class="img-option">
+              <input
+                type="radio"
+                name="profilePicture"
+                value="profile1.jpg"
+                required
+              />
+              <img src="/images/profile1.jpg" alt="Profile 1" />
+            </label>
+
+            <label class="img-option">
+              <input type="radio" name="profilePicture" value="profile2.jpg" />
+              <img src="/images/profile2.jpg" alt="Profile 2" />
+            </label>
+
+            <label class="img-option">
+              <input type="radio" name="profilePicture" value="profile3.jpg" />
+              <img src="/images/profile3.jpg" alt="Profile 3" />
+            </label>
+
+            <label class="img-option">
+              <input type="radio" name="profilePicture" value="profile4.jpg" />
+              <img src="/images/profile4.jpg" alt="Profile 4" />
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Gender</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="gender" value="Male" required />
+              Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="Female" /> Female</label
+            >
+            <label
+              ><input type="radio" name="gender" value="Other" /> Other</label
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Department</label>
+
+          <div class="dept-group">
+            <label class="dept-option">
+              <input type="radio" name="department" value="HR" required />
+              <span class="custom-box"></span>
+              HR
+            </label>
+
+            <label class="dept-option">
+              <input type="radio" name="department" value="Sales" />
+              <span class="custom-box"></span>
+              Sales
+            </label>
+
+            <label class="dept-option">
+              <input type="radio" name="department" value="Finance" />
+              <span class="custom-box"></span>
+              Finance
+            </label>
+
+            <label class="dept-option">
+              <input type="radio" name="department" value="Engineer" />
+              <span class="custom-box"></span>
+              Engineer
+            </label>
+
+            <label class="dept-option">
+              <input type="radio" name="department" value="Others" />
+              <span class="custom-box"></span>
+              Others
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Salary</label>
+          <input
+            type="number"
+            name="salary"
+            placeholder="Enter Salary"
+            required
+          />
+        </div>
+
+        <div class="buttons">
+          <button
+            type="button"
+            class="cancel"
+            onclick="window.location.href = '/'"
+          >
+            Cancel
+          </button>
+
+          <button type="submit" class="submit">Submit</button>
+
+          <button type="reset" class="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

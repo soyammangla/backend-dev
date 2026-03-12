@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <title>Employee Management System</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f8f9fa;
+    }
+
+    .navbar {
+      font-family: "Outfit", sans-serif;
+      background: #00a9b5;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 38px;
+      color: #222;
+    }
+
+    .table-box {
+      width: 90%;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 12px rgba(0,0,0,0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 14px;
+      background: #f4f4f4;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+
+    tr:hover {
+      background: #fafafa;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 20px;
+      background: #d9fdd3;
+      color: #2d7a2d;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-size: 13px;
+      text-decoration: none;
+      margin-right: 6px;
+    }
+
+    .delete-btn {
+      background: #dc3545;
+    }
+
+    .update-btn {
+      background: #343a40;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <h2>Employee Management System</h2>
+    <div>
+      <a href="/create">Add Employee</a>
+    </div>
+  </div>
+
+  <h1>Employees Table</h1>
+
+  <div class="table-box">
+    <table>
+
+      <tr>
+        <th>S.No</th>
+        <th>Employee</th>
+        <th>Enrollment</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Action</th>
+      </tr>
+
+      <% data.forEach((emp, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td>
+            <div class="profile">
+              <img src="/images/<%= emp.profilePicture %>" alt="Profile">
+              <span><%= emp.name %></span>
+            </div>
+          </td>
+          <td><%= emp.enrollmentNumber %></td>
+          <td><%= emp.gender %></td>
+          <td>
+            <span class="badge"><%= emp.department %></span>
+          </td>
+          <td>₹ <%= emp.salary %></td>
+          <td>
+            <a class="btn delete-btn"
+               href="/delete/<%= emp.enrollmentNumber %>">
+              Delete
+            </a>
+
+            <a class="btn update-btn"
+               href="/edit/<%= emp.enrollmentNumber %>">
+              Update
+            </a>
+          </td>
+
+        </tr>
+      <% }) %>
+
+    </table>
+  </div>
+
+</body>
+</html>

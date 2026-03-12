@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Employee</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8f9fa;
+      }
+
+      .navbar {
+        background: #00a9b5;
+        padding: 15px 30px;
+        color: white;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 30px 0;
+        font-size: 35px;
+      }
+
+      .form-box {
+        width: 400px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #343a40;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      button:hover {
+        background: black;
+      }
+
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #00a9b5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <h2>Employee Management System</h2>
+    </div>
+
+    <h1>Update Employee</h1>
+
+    <div class="form-box">
+      <form action="/edit/<%= employee.enrollmentNumber %>" method="POST">
+        <input type="text" name="name" placeholder="Name" value="<%= employee.name %>" required />
+
+        <input
+          type="text"
+          name="position"
+          placeholder="Position"
+          value="<%= employee.position %>"
+          required
+        />
+
+        <input
+          type="number"
+          name="salary"
+          placeholder="Salary"
+          value="<%= employee.salary %>"
+          required
+        />
+
+        <button type="submit">Update Employee</button>
+      </form>
+
+      <a href="/">⬅ Back to Table</a>
+    </div>
+  </body>
+</html>
