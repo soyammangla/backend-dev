@@ -1,3 +1,0 @@
-
-save(()=>{
-    console.log("hello")
