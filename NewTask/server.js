@@ -53,3 +53,22 @@ const deleteUser = async (email) => {
   }
 };
 deleteUser("soyammangla115@gmail.com");
+
+const findallusers = async () => {
+  try {
+    const users = await user.findallusers();
+    console.log("All users retrieved successfully:", users);
+  } catch (error) {
+    console.error("Error retrieving all users:", error);
+  }
+};
+findallusers();
+
+const result = async () => {
+  const res = await user.aggregate({
+    sort: { price: -1 },
+    limit: 5,
+  });
+  console.log(res);
+};
+result();
