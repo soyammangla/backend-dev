@@ -1,0 +1,31 @@
+// 1. Add new book
+db.books.insertOne({
+title: "Java Basics",
+author: "John Doe",
+available: true,
+userId: null,
+});
+
+// 2. Find books by author
+db.books.find({ author: "John Doe" });
+
+// 3. Update book availability
+db.books.updateOne({ title: "Java Basics" }, { $set: { available: false } });
+
+// 4. Track borrowed books by user
+db.books.updateOne(
+{ title: "Java Basics" },
+{ $set: { available: false, userId: "user123" } },
+);
+
+// Find books borrowed by a user
+db.books.find({ userId: "user123" });
+
+// Exercise 4: JSON to BSON Conversion
+
+const order = {
+orderId: NumberInt(12345),
+orderDate: ISODate("2024-01-15T00:00:00Z"),
+totalAmount: NumberDecimal("99.99"),
+items: ["item1", "item2"],
+};
