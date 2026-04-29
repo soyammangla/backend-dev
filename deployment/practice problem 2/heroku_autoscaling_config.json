@@ -1,0 +1,39 @@
+{
+  "app": "ecommerce-platform-peak",
+  "formation": [
+    {
+      "process": "web",
+      "quantity": 500,
+      "size": "Performance-L",
+      "autoscaling": {
+        "enabled": true,
+        "min_quantity": 10,
+        "max_quantity": 500,
+        "notifications": {
+          "email": true,
+          "webhooks": [
+            "https://monitoring.example.com/alerts/heroku"
+          ]
+        },
+        "policy": {
+          "metric": "latency",
+          "target": 1000
+        }
+      }
+    },
+    {
+      "process": "worker",
+      "quantity": 50,
+      "size": "Performance-M",
+      "autoscaling": {
+        "enabled": true,
+        "min_quantity": 5,
+        "max_quantity": 100,
+        "policy": {
+          "metric": "queue_depth",
+          "target": 100
+        }
+      }
+    }
+  ]
+}

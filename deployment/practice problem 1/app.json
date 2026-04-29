@@ -1,0 +1,43 @@
+{
+  "name": "enterprise-transaction-system",
+  "description": "Multi-environment Node.js transaction processor",
+  "keywords": ["node", "iis", "heroku", "mongodb"],
+  "repository": "https://github.com/org/transaction-system",
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment mode",
+      "value": "development"
+    },
+    "MONGODB_URI": {
+      "description": "Database connection string",
+      "required": true
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level (debug, info, error)",
+      "value": "debug"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "addons": [
+    "heroku-redis:hobby-dev"
+  ],
+  "environments": {
+    "staging": {
+      "env": {
+        "NODE_ENV": "staging",
+        "LOG_LEVEL": "info"
+      }
+    },
+    "production": {
+      "env": {
+        "NODE_ENV": "production",
+        "LOG_LEVEL": "error"
+      }
+    }
+  }
+}
